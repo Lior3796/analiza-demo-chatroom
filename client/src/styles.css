@@ -1,0 +1,106 @@
+:root {
+  --gap: 12px;
+  --border: #d9d9e0;
+  --muted: #6b6b76;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f4f4f7;
+  color: #1c1c21;
+}
+
+.app {
+  box-sizing: border-box;
+  max-width: 620px;
+  height: 100vh;
+  margin: 0 auto;
+  padding: var(--gap);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* The message list is the only part of the page that scrolls, so the
+   composer below it never moves as messages arrive. */
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  margin: 0;
+  padding: var(--gap);
+  list-style: none;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.messages li.chat {
+  padding: 4px 0;
+}
+
+.messages li.system {
+  padding: 4px 0;
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+  font-size: 13px;
+}
+
+.nickname {
+  margin-right: 6px;
+  font-weight: 600;
+}
+
+.composer {
+  display: flex;
+  gap: var(--gap);
+}
+
+.composer input {
+  flex: 1;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font: inherit;
+}
+
+button {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.leave {
+  align-self: flex-start;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  align-items: flex-start;
+  padding: var(--gap);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
