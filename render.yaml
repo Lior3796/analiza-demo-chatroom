@@ -5,6 +5,9 @@ services:
     plan: free
     buildCommand: npm install && npm run build
     startCommand: npm start
+    # Cheap endpoint that exercises the router -> controller -> model chain,
+    # so a deploy that cannot reach SQLite fails instead of serving errors.
+    healthCheckPath: /api/messages
     envVars:
       - key: NODE_VERSION
         value: 22
