@@ -14,7 +14,13 @@ export function createServer() {
   app.use(express.json());
   app.use('/api/messages', messagesRouter);
   app.use(express.static(clientDist));
-  app.get('*', (req, res) => res.sendFile(path.join(clientDist, 'index.html')));
+  // Any other path is a client-side route and gets the app shell, except
+  // unknown /api paths, which should 404 rather than return HTML.
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api/')) return next();
+
+    res.sendFile(path.join(clientDist, 'index.html'));
+  });
 
   const server = createHttpServer(app);
   const wss = attachChatSocket(server);

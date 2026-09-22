@@ -28,3 +28,11 @@ describe('GET /api/messages', () => {
     expect(response.body[0]).toMatchObject({ nickname: 'Ada', text: 'hello', type: 'chat' });
   });
 });
+
+describe('unknown routes', () => {
+  it('404s an unknown API path instead of serving the app shell', async () => {
+    const response = await request(app).get('/api/nope');
+
+    expect(response.status).toBe(404);
+  });
+});
